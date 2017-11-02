@@ -1,47 +1,43 @@
 import { mock } from './mock.js';
-import { List, ListItem } from 'react-native-elements'
 import React, { PureComponent } from 'react';
-import Relay, { createContainer } from 'react-relay'
+import { QueryRenderer, graphql } from 'react-relay';
+import { Text } from 'react-native';
+import environment from '../relayNetwork';
+import PersonList from '../components/PersonList'
+
 
 class PersonScreen extends PureComponent {
   render() {
-    return(
-      <List>
-        {
-          mock.map((person, i) => (
-            <ListItem
-              key={i}
-              title={person.name}
-              rightIcon={{ name: 'chevron-right' }}
-            />
-          ))
-        }
-      </List>
+    return (
+      <QueryRenderer
+        environment={environment}
+        query={graphql`
+          query PersonScreenQuery ($page: Int!){
+            allPersons(page: $page){
+              name
+              height
+              mass
+              hairColor
+              skinColor
+              gender
+              birthYear
+            }
+          }
+        `}
+        variables={{
+          page: 1
+        }}
+        render={({error, props}) => {
+          if (error) {
+            return <Text>{error.message}</Text>;
+          } else if (props) {
+            return <PersonList persons={props.allPersons} />
+          }
+          return <Text>Loading</Text>;
+        }}
+      />      
     )
   }
 }
-
-// const PersonContainer = Relay.createContainer(PersonScreen, {
-//   fragments: {
-//     story: () => Relay.QL `
-//       fragment on PersonScreen {
-//         name
-//       }`
-//   }
-// })
-
-// const PersonRenderer = (
-//   <Relay.Renderer
-//     Container={PersonContainer}
-//     queryConfig={{
-//       queries: {
-//         story: () => Relay.QL `
-//           query {
-//             allPersons
-//           }
-//         `
-//       }
-//     }}
-//   />)
 
 export default PersonScreen

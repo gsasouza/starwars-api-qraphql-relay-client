@@ -1,0 +1,21 @@
+# Person data
+type Person {
+  # The ID of an object
+  id: ID!
+  name: String
+  height: String
+  mass: String
+  hairColor: String
+  skinColor: String
+  eyeColor: String
+  birthYear: String
+  gender: String
+  homeworld: String
+  created: String
+  edited: String
+  url: String
+}
+
+type Query {
+  allPersons(page: Int): [Person]
+}
