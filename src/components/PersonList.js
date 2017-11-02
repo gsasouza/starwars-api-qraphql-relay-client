@@ -13,7 +13,7 @@ export default (props) => (
           // onPressRightIcon={props.navigation.navigate(props.route, item)}
         />
       )}
-      keyExtractor={() => (Math.round(Math.random()*100))}
+      keyExtractor={ (item, index) => index }
     />
   </List>
 )
