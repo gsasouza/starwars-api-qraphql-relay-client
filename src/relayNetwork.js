@@ -17,7 +17,9 @@ const fetchQuery = async (operation, variables, cacheConfig, uploadables) => {
       variables,
     }),
   });
-  return await response.json();
+  const data = await response.json();
+  console.log(data)
+  return data
 }
 
 const source = new RecordSource();
@@ -30,5 +32,4 @@ const environment = new Environment({
   network,
   store,
 });
-
 export default environment

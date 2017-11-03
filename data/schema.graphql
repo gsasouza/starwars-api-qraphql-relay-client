@@ -2,6 +2,7 @@
 type Person {
   # The ID of an object
   id: ID!
+  _id: String
   name: String
   height: String
   mass: String

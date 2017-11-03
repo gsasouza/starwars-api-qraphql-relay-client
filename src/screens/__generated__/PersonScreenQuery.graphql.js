@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash d3a5c78b17a434d09cc68b725e2a1916
+ * @relayHash e72e78b6ef0a295bf01fd24fb91c2439
  */
 
 /* eslint-disable */
@@ -11,6 +11,7 @@
 import type {ConcreteBatch} from 'relay-runtime';
 export type PersonScreenQueryResponse = {|
   +allPersons: ?$ReadOnlyArray<?{|
+    +_id: ?string;
     +name: ?string;
     +height: ?string;
     +mass: ?string;
@@ -28,6 +29,7 @@ query PersonScreenQuery(
   $page: Int!
 ) {
   allPersons(page: $page) {
+    _id
     name
     height
     mass
@@ -69,6 +71,13 @@ const batch /*: ConcreteBatch*/ = {
         "name": "allPersons",
         "plural": true,
         "selections": [
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "_id",
+            "storageKey": null
+          },
           {
             "kind": "ScalarField",
             "alias": null,
@@ -160,6 +169,13 @@ const batch /*: ConcreteBatch*/ = {
             "kind": "ScalarField",
             "alias": null,
             "args": null,
+            "name": "_id",
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
             "name": "name",
             "storageKey": null
           },
@@ -217,7 +233,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query PersonScreenQuery(\n  $page: Int!\n) {\n  allPersons(page: $page) {\n    name\n    height\n    mass\n    hairColor\n    skinColor\n    gender\n    birthYear\n    id\n  }\n}\n"
+  "text": "query PersonScreenQuery(\n  $page: Int!\n) {\n  allPersons(page: $page) {\n    _id\n    name\n    height\n    mass\n    hairColor\n    skinColor\n    gender\n    birthYear\n    id\n  }\n}\n"
 };
 
 module.exports = batch;

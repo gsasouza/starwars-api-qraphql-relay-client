@@ -13,7 +13,7 @@ export default (props) => (
           // onPressRightIcon={props.navigation.navigate(props.route, item)}
         />
       )}
-      keyExtractor={ (item, index) => index }
+      keyExtractor={ (item, index) => item._id }
     />
   </List>
 )

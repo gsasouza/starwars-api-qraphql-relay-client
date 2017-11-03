@@ -14,6 +14,7 @@ class PersonScreen extends PureComponent {
         query={graphql`
           query PersonScreenQuery ($page: Int!){
             allPersons(page: $page){
+              _id
               name
               height
               mass
@@ -31,6 +32,7 @@ class PersonScreen extends PureComponent {
           if (error) {
             return <Text>{error.message}</Text>;
           } else if (props) {
+            console.log(props)
             return <PersonList persons={props.allPersons} />
           }
           return <Text>Loading</Text>;
