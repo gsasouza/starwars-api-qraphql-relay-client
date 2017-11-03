@@ -18,7 +18,6 @@ const fetchQuery = async (operation, variables, cacheConfig, uploadables) => {
     }),
   });
   const data = await response.json();
-  console.log(data)
   return data
 }
 

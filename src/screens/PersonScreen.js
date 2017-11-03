@@ -32,8 +32,7 @@ class PersonScreen extends PureComponent {
           if (error) {
             return <Text>{error.message}</Text>;
           } else if (props) {
-            console.log(props)
-            return <PersonList persons={props.allPersons} />
+            return <PersonList persons={props.allPersons} navigation={this.props.navigation} />
           }
           return <Text>Loading</Text>;
         }}

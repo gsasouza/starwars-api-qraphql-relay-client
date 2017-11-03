@@ -1,12 +1,12 @@
 import React from 'react';
 import { TabNavigator } from 'react-navigation';
-import PersonScreen from './screens/PersonScreen';
+import PersonNavigator from './navigators/PersonNavigator';
 import PlanetScreen from './screens/PlanetScreen';
 
 
 const RootTabs = TabNavigator({
   Home: {
-    screen: PersonScreen,
+    screen: PersonNavigator,
     navigationOptions: {
       tabBarLabel: 'Personagens',
     },
