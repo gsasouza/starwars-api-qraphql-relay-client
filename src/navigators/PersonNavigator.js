@@ -5,11 +5,21 @@ import PersonDetails from '../screens/PersonDetails';
 
 const Router = StackNavigator(
   {
-    Persons: { screen: PersonScreen, header: null },
-    PersonDetail: { screen: PersonDetails}
+    Persons: {
+      screen: PersonScreen,
+      navigationOptions: {
+        title: 'Characters',
+      }
+    },  
+    PersonDetail: {
+      screen: PersonDetails,
+      navigationOptions: {
+        title: 'Details',
+      }
+    }
   },
   {
-    headerMode: 'none',
+    headerMode: 'screen',
     initialRouteName: 'Persons',
   }
 )

@@ -1,20 +1,49 @@
 import React from 'react';
-import { TabNavigator } from 'react-navigation';
+import { DrawerNavigator } from 'react-navigation';
+
 import PersonNavigator from './navigators/PersonNavigator';
+
 import PlanetScreen from './screens/PlanetScreen';
+import MovieScreen from './screens/MovieScreen';
+import SpecieScreen from './screens/SpecieScreen';
+import StarshipScreen from './screens/StarshipScreen';
+import VehicleScreen from './screens/VehicleScreen';
 
-
-const RootTabs = TabNavigator({
-  Home: {
+const RootTabs = DrawerNavigator({
+  Person: {
     screen: PersonNavigator,
     navigationOptions: {
-      tabBarLabel: 'Personagens',
+      drawerLabel: 'Characters',
     },
   },
-  Profile: {
+  Movie: {
+    screen: MovieScreen,
+    navigationOptions: {
+      drawerLabel: 'Movies',
+    },
+  },
+  Planet: {
     screen: PlanetScreen,
     navigationOptions: {
-      tabBarLabel: 'Planetas',
+      drawerLabel: 'Planets',
+    },
+  },
+  Specie: {
+    screen: SpecieScreen,
+    navigationOptions: {
+      drawerLabel: 'Species',
+    },
+  },
+  Starship: {
+    screen: StarshipScreen,
+    navigationOptions: {
+      drawerLabel: 'Starships',
+    },
+  },
+  Vehicle: {
+    screen: VehicleScreen,
+    navigationOptions: {
+      drawerLabel: 'Vehicles',
     },
   },
 });
